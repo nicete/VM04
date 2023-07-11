@@ -2,7 +2,7 @@ version: '3'
 
 services:
   web:
-    image: php:7.4-apache
+    build: .
     ports:
       - "8080:80"
     volumes:
@@ -16,3 +16,4 @@ services:
       MYSQL_ROOT_PASSWORD: password
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/my.cnf

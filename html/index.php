@@ -15,7 +15,7 @@
     <section>
         <h2>Asset Information</h2>
         <p>Starting Price: $100</p>
-        <p>Current Price: <span id="currentPrice"><!-- Add PHP code to display current price --></span></p>
+        <p>Current Price: <span id="currentPrice"><?php include 'priceGenerator.php'; ?></span></p>
     </section>
 
     <section>
@@ -39,9 +39,12 @@
 
         function getPrice() {
             $.ajax({
-                url: 'get_price.php',
+                url: 'priceGenerator.php',
                 success: function(data) {
                     $('#currentPrice').text(data);
+                },
+                error: function() {
+                    $('#currentPrice').text('Error getting price');
                 }
             });
         }
